@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Add new product</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onAdd()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+      @if (productForm.get('name')?.invalid && (productForm.get('name')?.touched || productForm.get('name')?.dirty)) {
+        <div class="text-danger">Name is required</div>
+      }
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" id="description" class="form-control" formControlName="description">
+      @if (productForm.get('description')?.invalid && (productForm.get('description')?.touched || productForm.get('description')?.dirty)) {
+        <div class="text-danger">Description is required</div>
+      }
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" id="price" class="form-control" formControlName="price">
+      @if (productForm.get('price')?.invalid && (productForm.get('price')?.touched || productForm.get('price')?.dirty)) {
+        <div class="text-danger">Price is required and must be non-negative</div>
+      }
+    </div>
+    <div class="actions-container">
+      <button type="submit" class="btn btn-success" [disabled]="productForm.invalid">Add product</button>
+      <button class="btn btn-primary" (click)="onBack()">Back</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Product details</h2>
+  @if (product) {
+    <div>
+      <p><strong>ID:</strong> {{ product.id }}</p>
+      <p><strong>Name:</strong> {{ product.name }}</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+      <p><strong>Price:</strong> {{ product.price }}</p>
+      <button class="btn btn-primary" (click)="onBack()">Back</button>
+    </div>
+  }
+</div>

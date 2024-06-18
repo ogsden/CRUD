@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Product list</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products$ | async; track product.id) {
+        <tr>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>
+            <div class="actions-container">
+              <a class="btn btn-primary" [routerLink]="['/edit', product.id]">Edit</a>
+              <a class="btn btn-info" [routerLink]="['/details', product.id]">Details</a>
+              <button class="btn btn-danger" (click)="onDelete(product.id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <a class="btn btn-success" [routerLink]="['/add']">Add new product</a>
+</div>
